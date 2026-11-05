@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ayn | A Modern Ritual</title>
+  <meta name="description" content="Ayn - A Modern Ritual. Discover our unique cafe experience, explore our menu, and visit us in London.">
+  <meta name="theme-color" content="#0b0907">
+  <meta property="og:title" content="Ayn | A Modern Ritual">
+  <meta property="og:description" content="A London-born café inspired by the ritual of coffee culture in Saudi Arabia. 168 New Cavendish St, London W1W 6YX.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0907'/%3E%3Cpath d='M8 32 Q32 10 56 32 Q32 54 8 32Z' fill='none' stroke='%23d4af37' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%23d4af37'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    document.documentElement.classList.add('js');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('reduced');
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Atmosphere -->
+  <canvas class="motes" id="motes" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor__ring"></span><span class="cursor__dot"></span></div>
+
+  <!-- Loader: Ayn (عين) means "eye" -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <svg class="loader__eye" viewBox="0 0 220 120">
+        <path class="loader__lid" d="M12 60 Q110 -14 208 60 Q110 134 12 60 Z"/>
+        <circle class="loader__iris" cx="110" cy="60" r="26"/>
+        <circle class="loader__pupil" cx="110" cy="60" r="9"/>
+        <path class="loader__lash" d="M110 6 L110 -6 M70 14 L64 3 M150 14 L156 3 M36 30 L27 21 M184 30 L193 21"/>
+      </svg>
+      <p class="loader__word"><span>AYN</span><span class="loader__dot">✦</span><span class="ar" lang="ar">عين</span></p>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="Ayn, back to top">
+      <span class="nav__mark" aria-hidden="true">
+        <svg viewBox="0 0 40 24"><path d="M2 12 Q20 -2 38 12 Q20 26 2 12Z"/><circle cx="20" cy="12" r="5"/></svg>
+      </span>
+      <span class="nav__word">AYN</span>
+      <span class="nav__ar" lang="ar">عين</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#ritual" data-nav>The Ritual</a>
+      <a href="#signatures" data-nav>Signatures</a>
+      <a href="#menu" data-nav>Menu</a>
+      <a href="#book" data-nav>Menu Book</a>
+      <a href="#visit" data-nav>Visit</a>
+    </nav>
+    <a class="nav__cta" href="#contact">Get in Touch</a>
+    <button class="nav__burger" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__pattern" aria-hidden="true"></div>
+    <nav class="drawer__links" aria-label="Mobile">
+      <a href="#ritual"><span>01</span>The Ritual</a>
+      <a href="#signatures"><span>02</span>Signatures</a>
+      <a href="#menu"><span>03</span>Menu</a>
+      <a href="#book"><span>04</span>Menu Book</a>
+      <a href="#visit"><span>05</span>Visit</a>
+      <a href="#contact"><span>06</span>Get in Touch</a>
+    </nav>
+    <p class="drawer__foot">168 New Cavendish St, London W1W 6YX</p>
+  </div>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ============ THE POUR (scroll-driven hero) ============ -->
+    <section class="pour" id="ritual" aria-label="The Ayn ritual">
+      <div class="pour__stage">
+        <div class="pour__bg" aria-hidden="true">
+          <div class="pour__glow"></div>
+          <span class="pour__watermark" lang="ar">عين</span>
+        </div>
+
+        <svg class="pour__svg" id="pourSvg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="gMetal" gradientUnits="userSpaceOnUse" x1="-120" y1="0" x2="120" y2="0">
+              <stop offset="0" stop-color="#3a2606"/>
+              <stop offset=".1" stop-color="#7a5514"/>
+              <stop offset=".24" stop-color="#c79a3a"/>
+              <stop offset=".35" stop-color="#f3dc95"/>
+              <stop offset=".41" stop-color="#fff7dc"/>
+              <stop offset=".5" stop-color="#e2b955"/>
+              <stop offset=".64" stop-color="#a7781f"/>
+              <stop offset=".8" stop-color="#674710"/>
+              <stop offset=".9" stop-color="#b4872f"/>
+              <stop offset="1" stop-color="#36240a"/>
+            </linearGradient>
+            <linearGradient id="gMetalSpout" gradientUnits="userSpaceOnUse" x1="-196" y1="-246" x2="-108" y2="-306">
+              <stop offset="0" stop-color="#4a3208"/>
+              <stop offset=".25" stop-color="#9c7020"/>
+              <stop offset=".55" stop-color="#e9c66d"/>
+              <stop offset=".7" stop-color="#fff2c8"/>
+              <stop offset=".85" stop-color="#c99a3a"/>
+              <stop offset="1" stop-color="#5a3d10"/>
+            </linearGradient>
+            <linearGradient id="gMetalV" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f6e2a0"/>
+              <stop offset=".45" stop-color="#c3932f"/>
+              <stop offset="1" stop-color="#4f360c"/>
+            </linearGradient>
+            <linearGradient id="gRing" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff1c4"/>
+              <stop offset=".5" stop-color="#c8992f"/>
+              <stop offset="1" stop-color="#5c410f"/>
+            </linearGradient>
+            <radialGradient id="gJewel" cx=".38" cy=".32" r=".7">
+              <stop offset="0" stop-color="#ff9aa6"/>
+              <stop offset=".35" stop-color="#a3192f"/>
+              <stop offset="1" stop-color="#3b0610"/>
+            </radialGradient>
+            <linearGradient id="gPorcelain" gradientUnits="userSpaceOnUse" x1="-82" y1="0" x2="82" y2="0">
+              <stop offset="0" stop-color="#9c907c"/>
+              <stop offset=".18" stop-color="#e2d8c6"/>
+              <stop offset=".38" stop-color="#fffdf7"/>
+              <stop offset=".55" stop-color="#f5eee2"/>
+              <stop offset=".82" stop-color="#cfc3ae"/>
+              <stop offset="1" stop-color="#857864"/>
+            </linearGradient>
+            <linearGradient id="gSaucer" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fffaf0"/>
+              <stop offset=".6" stop-color="#e6dccb"/>
+              <stop offset="1" stop-color="#a89a82"/>
+            </linearGradient>
+            <linearGradient id="gInterior" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d8cdb9"/>
+              <stop offset=".45" stop-color="#a39782"/>
+              <stop offset="1" stop-color="#6a5f4e"/>
+            </linearGradient>
+            <radialGradient id="gQahwa" cx=".42" cy=".38" r=".75">
+              <stop offset="0" stop-color="#f0c877"/>
+              <stop offset=".45" stop-color="#cf9441"/>
+              <stop offset="1" stop-color="#7f5119"/>
+            </radialGradient>
+            <linearGradient id="gStream" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#9c5f1c"/>
+              <stop offset=".35" stop-color="#d89a3e"/>
+              <stop offset=".55" stop-color="#f0c269"/>
+              <stop offset="1" stop-color="#b0711f"/>
+            </linearGradient>
+            <radialGradient id="gHalo" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#d4af37" stop-opacity=".26"/>
+              <stop offset=".45" stop-color="#d4af37" stop-opacity=".08"/>
+              <stop offset="1" stop-color="#d4af37" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="gTable" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#d4af37" stop-opacity="0"/>
+              <stop offset=".5" stop-color="#d4af37" stop-opacity=".7"/>
+              <stop offset="1" stop-color="#d4af37" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="fSteam" x="-100%" y="-30%" width="300%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+            <filter id="fSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+            <filter id="fBloom" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+            <clipPath id="cupMouth"><ellipse cx="0" cy="0" rx="77" ry="22.6"/></clipPath>
+            <clipPath id="surfaceClip"><ellipse id="surfaceClipEl" cx="0" cy="100" rx="30" ry="9"/></clipPath>
+            <path id="haloPath" d="M 0 -262 a 262 262 0 1 1 0 524 a 262 262 0 1 1 0 -524"/>
+            <linearGradient id="archGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2a2016"/>
+              <stop offset=".55" stop-color="#18120d"/>
+              <stop offset="1" stop-color="#0f0b08"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Halo, rosette and engraved ring of words behind the cup -->
+          <g id="halo" transform="translate(360 742)">
+            <circle r="420" fill="url(#gHalo)"/>
+            <g id="rosette" class="rosette"></g>
+            <text class="halo-text"><textPath href="#haloPath" textLength="1640" lengthAdjust="spacing">QAHWA ✦ CARDAMOM ✦ SAFFRON ✦ KARAK ✦ MATCHA ✦ A MODERN RITUAL ✦ LONDON ✦ QAHWA ✦ CARDAMOM ✦ SAFFRON ✦</textPath></text>
+          </g>
+
+          <rect x="40" y="891" width="920" height="1.2" fill="url(#gTable)"/>
+          <ellipse cx="360" cy="893" rx="300" ry="16" fill="#d4af37" opacity=".06" filter="url(#fSoft)"/>
+
+          <!-- Finjan: back half -->
+          <g id="cupBack" transform="translate(360 742)">
+            <ellipse cx="0" cy="146" rx="150" ry="18" fill="#000" opacity=".55" filter="url(#fSoft)"/>
+            <ellipse cx="0" cy="132" rx="136" ry="30" fill="url(#gRing)"/>
+            <ellipse cx="0" cy="128" rx="131" ry="27" fill="url(#gSaucer)"/>
+            <ellipse cx="0" cy="128" rx="108" ry="21.5" fill="none" stroke="#c9a23c" stroke-width="1.2" opacity=".85"/>
+            <ellipse cx="0" cy="127" rx="66" ry="12.5" fill="#cbbfa9"/>
+            <g id="saucerMotifs" fill="none" stroke="#c9a23c" stroke-width="1"></g>
+            <path d="M -40 110 L 40 110 L 47 126 Q 0 133 -47 126 Z" fill="url(#gRing)"/>
+            <ellipse cx="0" cy="0" rx="80" ry="24" fill="url(#gInterior)"/>
+            <g clip-path="url(#cupMouth)">
+              <ellipse id="qSurface" cx="0" cy="104" rx="34" ry="9" fill="url(#gQahwa)"/>
+              <ellipse id="qSheen" cx="-8" cy="100" rx="14" ry="3" fill="#fff4cf" opacity="0"/>
+              <g id="ripples" clip-path="url(#surfaceClip)" fill="none" stroke="#ffe7a8"></g>
+            </g>
+          </g>
+
+          <!-- Coffee stream and splash, layered between cup back and front -->
+          <g id="pourFlow">
+            <path id="streamGlow" fill="#e3a94c" opacity=".38" filter="url(#fBloom)" d=""/>
+            <path id="stream" fill="url(#gStream)" d=""/>
+            <path id="streamHi" fill="none" stroke="#fff3cf" stroke-width="1.6" stroke-linecap="round" opacity=".7" d=""/>
+            <g id="splash" fill="#e9b864"></g>
+          </g>
+
+          <!-- Finjan: front wall -->
+          <g id="cupFront" transform="translate(360 742)">
+            <path d="M -80 0 A 80 24 0 0 0 80 0 C 79 52, 64 100, 36 112 Q 0 118 -36 112 C -64 100, -79 52, -80 0 Z" fill="url(#gPorcelain)"/>
+            <g id="cupOrnament" fill="none" stroke="#c9a23c" stroke-linecap="round"></g>
+            <path d="M -74 26 C -70 66, -58 94, -40 106" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3.5" stroke-linecap="round" filter="url(#fBloom)"/>
+            <ellipse cx="0" cy="0" rx="80" ry="24" fill="none" stroke="url(#gRing)" stroke-width="3.4"/>
+            <ellipse cx="0" cy="0" rx="80" ry="24" fill="none" stroke="#fff4cc" stroke-width=".8" opacity=".6" transform="translate(0 -1)"/>
+          </g>
+
+          <!-- Steam -->
+          <g id="steam" transform="translate(360 742)" fill="none" stroke="#f6ead2" stroke-linecap="round" filter="url(#fSteam)" opacity="0">
+            <path class="steam-wisp" d=""/>
+            <path class="steam-wisp" d=""/>
+            <path class="steam-wisp" d=""/>
+          </g>
+
+          <!-- The Dallah -->
+          <g id="pot">
+            <g id="potArt">
+              <path d="M 74 -338 C 152 -352, 188 -292, 173 -220 C 163 -168, 139 -136, 108 -118" fill="none" stroke="url(#gMetalV)" stroke-width="15" stroke-linecap="round"/>
+              <path d="M 76 -342 C 148 -354, 180 -296, 167 -224 C 158 -176, 137 -146, 112 -126" fill="none" stroke="#fff4cc" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/>
+              <ellipse cx="173" cy="-252" rx="9" ry="12" fill="url(#gRing)"/>
+              <ellipse cx="140" cy="-149" rx="7" ry="9" fill="url(#gRing)" transform="rotate(-38 140 -149)"/>
+
+              <path d="M -62 -206 C -112 -240, -168 -300, -206 -372 C -214 -388, -228 -400, -254 -408 C -241 -397, -233 -387, -227 -373 C -206 -322, -160 -200, -104 -126 Z" fill="url(#gMetalSpout)"/>
+              <path d="M -70 -212 C -116 -246, -166 -302, -201 -368" fill="none" stroke="#fff4cc" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
+              <path d="M -150 -272 C -158 -262, -170 -246, -176 -232" fill="none" stroke="url(#gRing)" stroke-width="7" stroke-linecap="round"/>
+              <path d="M -108 -232 C -118 -214, -130 -192, -138 -176" fill="none" stroke="url(#gRing)" stroke-width="9" stroke-linecap="round"/>
+
+              <path d="M -98 0 C -98 -9, -88 -15, -72 -19 L 72 -19 C 88 -15, 98 -9, 98 0 Z" fill="url(#gMetal)"/>
+              <path d="M -70 -19 C -108 -34, -122 -80, -114 -114 C -108 -150, -76 -190, -40 -226 C -34 -232, -32 -240, -34 -248 L 34 -248 C 32 -240, 34 -232, 40 -226 C 76 -190, 108 -150, 114 -114 C 122 -80, 108 -34, 70 -19 Z" fill="url(#gMetal)"/>
+              <path d="M -42 -246 L 42 -246 C 47 -251, 47 -259, 42 -264 L -42 -264 C -47 -259, -47 -251, -42 -246 Z" fill="url(#gRing)"/>
+              <path d="M -36 -264 C -40 -292, -54 -320, -72 -340 L -82 -350 L 82 -350 L 72 -340 C 54 -320, 40 -292, 36 -264 Z" fill="url(#gMetal)"/>
+              <path d="M -88 -347 L 88 -347 C 93 -351, 93 -360, 88 -365 L -88 -365 C -93 -360, -93 -351, -88 -347 Z" fill="url(#gRing)"/>
+              <path d="M -74 -365 C -72 -394, -50 -414, -24 -422 L 24 -422 C 50 -414, 72 -394, 74 -365 Z" fill="url(#gMetal)"/>
+              <rect x="-29" y="-432" width="58" height="11" rx="5.5" fill="url(#gRing)"/>
+              <rect x="-19" y="-441" width="38" height="9" rx="4.5" fill="url(#gRing)"/>
+              <path d="M -14 -441 C -27 -453, -25 -475, -12 -491 C -6 -501, -3 -515, 0 -537 C 3 -515, 6 -501, 12 -491 C 25 -475, 27 -453, 14 -441 Z" fill="url(#gMetal)"/>
+              <circle cx="0" cy="-542" r="6.5" fill="url(#gRing)"/>
+
+              <g id="potEngrave" fill="none" stroke="#3a2504" stroke-opacity=".6" stroke-width="1.3"></g>
+
+              <g transform="translate(0 -84)">
+                <g id="potMedallion" fill="none" stroke="#3a2504" stroke-opacity=".75" stroke-width="1.2"></g>
+                <circle r="6.5" fill="url(#gJewel)" stroke="#f6dc8c" stroke-width="1.4"/>
+                <circle cx="-2" cy="-2.2" r="1.6" fill="#fff" opacity=".85"/>
+              </g>
+              <path d="M -64 -44 C -90 -84, -90 -140, -56 -190" fill="none" stroke="#fffbe8" stroke-opacity=".55" stroke-width="6" stroke-linecap="round" filter="url(#fBloom)"/>
+              <path d="M -26 -276 C -30 -298, -40 -318, -54 -334" fill="none" stroke="#fffbe8" stroke-opacity=".45" stroke-width="4" stroke-linecap="round" filter="url(#fBloom)"/>
+              <path d="M -50 -372 C -46 -390, -34 -404, -18 -412" fill="none" stroke="#fffbe8" stroke-opacity=".5" stroke-width="3" stroke-linecap="round" filter="url(#fBloom)"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Copy layer -->
+        <div class="pour__copy">
+          <div class="pour__intro" id="pourIntro">
+            <p class="eyebrow"><span class="eyebrow__line"></span>168 New Cavendish St · London W1W 6YX</p>
+            <h1 class="hero-title">
+              <span class="hero-title__en foil">AYN</span>
+              <span class="hero-title__ar" lang="ar">عين</span>
+            </h1>
+            <p class="hero-sub">A Modern Ritual</p>
+            <div class="scroll-cue"><span class="scroll-cue__drop"></span><span>Scroll to pour</span></div>
+          </div>
+
+          <div class="caption" data-in=".07" data-out=".28">
+            <p class="caption__no"><span lang="ar">١</span> I · The Origin</p>
+            <p class="caption__text"><strong>AYN <span lang="ar">(عين)</span></strong> is a London-born café inspired by the ritual of coffee culture in Saudi Arabia, where every cup is intentional, and every moment matters.</p>
+          </div>
+          <div class="caption" data-in=".27" data-out=".5">
+            <p class="caption__no"><span lang="ar">٢</span> II · Reimagined</p>
+            <p class="caption__text">Reimagined for a modern world, AYN blends <em>matcha</em>, <em>karak</em>, and contemporary café culture into something more than just a drink.</p>
+          </div>
+          <div class="caption" data-in=".49" data-out=".72">
+            <p class="caption__no"><span lang="ar">٣</span> III · The Pause</p>
+            <p class="caption__text">A pause in a fast-moving city.<br>A space to slow down, connect, and feel.</p>
+          </div>
+          <div class="caption caption--final" data-in=".71" data-out="2">
+            <p class="caption__no"><span lang="ar">٤</span> IV · The Ritual</p>
+            <p class="caption__text caption__text--big">Not just a drink.<br><span class="foil">A ritual.</span></p>
+            <a class="btn btn--gold" href="#menu"><span>Explore the Menu</span></a>
+          </div>
+        </div>
+
+        <ol class="rail" aria-hidden="true">
+          <li>I</li><li>II</li><li>III</li><li>IV</li>
+          <span class="rail__fill" id="railFill"></span>
+        </ol>
+        <div class="frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-label="What we pour">
+      <div class="marquee__track" id="marquee">
+        <div class="marquee__set">
+          <span>Saudi Qahwa</span><b>✦</b><span lang="ar">قهوة</span><b>✦</b><span>Karak Chai</span><b>✦</b><span lang="ar">كرك</span><b>✦</b><span>Ceremonial Matcha</span><b>✦</b><span lang="ar">ماتشا</span><b>✦</b><span>Saffron</span><b>✦</b><span lang="ar">زعفران</span><b>✦</b><span>Cardamom</span><b>✦</b><span lang="ar">هيل</span><b>✦</b>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SIGNATURES ============ -->
+    <section class="sig" id="signatures" aria-labelledby="sigTitle">
+      <div class="sig__sticky">
+        <div class="sig__head">
+          <p class="eyebrow"><span class="eyebrow__line"></span>Ayn Signature <span lang="ar" class="eyebrow__ar">توقيعات عين</span></p>
+          <h2 class="display" id="sigTitle" data-split>Seven signatures, poured like rituals.</h2>
+          <p class="lede" data-reveal>Each one built in layers: premium matcha, slow caramel, saffron and real pistachio. Scroll to walk the counter.</p>
+          <div class="sig__count" aria-hidden="true"><span id="sigNow">01</span><i></i><span>07</span></div>
+          <div class="sig__bar" aria-hidden="true"><span id="sigBar"></span></div>
+        </div>
+        <div class="sig__viewport">
+          <div class="sig__track" id="sigTrack">
+            <article class="sig-card" data-drink='{"layers":[["#e27d8f",0.36],["#f2e4d6",0.24],["#7f9b46",0.34]],"ice":true,"straw":true,"top":"none"}'>
+              <div class="sig-card__arch"><svg class="sig-card__svg" viewBox="0 0 300 400" aria-hidden="true"></svg></div>
+              <div class="sig-card__body">
+                <p class="sig-card__no">01</p>
+                <h3>Strawberry Cream Matcha</h3>
+                <p class="sig-card__desc">Sweet strawberry cream meets smooth matcha.</p>
+                <ul class="notes"><li>Premium Matcha</li><li>Real Strawberry</li></ul>
+                <p class="price">£4.9</p>
+              </div>
+            </article>
+            <article class="sig-card" data-drink='{"layers":[["#a8652a",0.22],["#e8d4b8",0.38],["#7a4a24",0.3]],"ice":true,"straw":false,"top":"drizzle"}'>
+              <div class="sig-card__arch"><svg class="sig-card__svg" viewBox="0 0 300 400" aria-hidden="true"></svg></div>
+              <div class="sig-card__body">
+                <p class="sig-card__no">02</p>
+                <h3>Caramel Dune Latte</h3>
+                <p class="sig-card__desc">Caramel waves blended with silky coffee &amp; milk.</p>
+                <ul class="notes"><li>Rich Caramel</li><li>Smooth Coffee</li><li>Silky Milk</li></ul>
+                <p class="price">£4.5</p>
+              </div>
+            </article>
+            <article class="sig-card" data-drink='{"layers":[["#f1e4c6",0.26],["#e2cdaa",0.32],["#3f2414",0.34]],"ice":true,"straw":true,"top":"none"}'>
+              <div class="sig-card__arch"><svg class="sig-card__svg" viewBox="0 0 300 400" aria-hidden="true"></svg></div>
+              <div class="sig-card__body">
+                <p class="sig-card__no">03</p>
+                <h3>Iced Spanish Latte</h3>
+                <p class="sig-card__desc">Bold espresso meets rich, sweet condensed milk over ice.</p>
+                <ul class="notes"><li>Bold Espresso</li><li>Rich Condensed Milk</li><li>Over Ice</li></ul>
+                <p class="price">£4.4</p>
+              </div>
+            </article>
+            <article class="sig-card" data-drink='{"layers":[["#a7b06a",0.3],["#e9ddc5",0.42],["#c9c08a",0.14]],"ice":false,"straw":false,"top":"crunch"}'>
+              <div class="sig-card__arch"><svg class="sig-card__svg" viewBox="0 0 300 400" aria-hidden="true"></svg></div>
+              <div class="sig-card__body">
+                <p class="sig-card__no">04</p>
+                <h3>Pistachio Royal Crunch Latte</h3>
+                <p class="sig-card__desc">Nutty pistachio blended with creamy milk &amp; a crunchy pistachio topping.</p>
+                <ul class="notes"><li>Real Pistachio</li><li>Crunchy Topping</li><li>Creamy &amp; Smooth</li></ul>
+                <p class="price">£4.9</p>
+              </div>
+            </article>
+            <article class="sig-card" data-drink='{"layers":[["#c96f2a",0.4],["#e9944f",0.3],["#f2b77a",0.2]],"ice":true,"straw":true,"top":"peach"}'>
+              <div class="sig-card__arch"><svg class="sig-card__svg" viewBox="0 0 300 400" aria-hidden="true"></svg></div>
+              <div class="sig-card__body">
+                <p class="sig-card__no">05</p>
+                <h3>Iced Peach Oolong</h3>
+                <p class="sig-card__desc">Juicy peach infused with fragrant oolong tea.</p>
+                <ul class="notes"><li>Juicy Peach</li><li>Fragrant Oolong Tea</li><li>Refreshing &amp; Light</li></ul>
+                <p class="price">£3.9</p>
+              </div>
+            </article>
+            <article class="sig-card" data-drink='{"layers":[["#f1e6d3",0.42],["#c7cf9a",0.08],["#86a04b",0.38]],"ice":true,"straw":false,"top":"none"}'>
+              <div class="sig-card__arch"><svg class="sig-card__svg" viewBox="0 0 300 400" aria-hidden="true"></svg></div>
+              <div class="sig-card__body">
+                <p class="sig-card__no">06</p>
+                <h3>White Chocolate Matcha</h3>
+                <p class="sig-card__desc">Smooth matcha with rich white chocolate.</p>
+                <ul class="notes"><li>Rich White Chocolate</li><li>Creamy &amp; Balanced</li></ul>
+                <p class="price">£4.5</p>
+              </div>
+            </article>
+            <article class="sig-card" data-drink='{"layers":[["#5f8fd0",0.3],["#eef0f6",0.26],["#7f9b47",0.34]],"ice":true,"straw":true,"top":"cloud"}'>
+              <div class="sig-card__arch"><svg class="sig-card__svg" viewBox="0 0 300 400" aria-hidden="true"></svg></div>
+              <div class="sig-card__body">
+                <p class="sig-card__no">07</p>
+                <h3>Blue Cloud Matcha</h3>
+                <p class="sig-card__desc">Creamy vanilla clouds blended with smooth ceremonial matcha.</p>
+                <ul class="notes"><li>Vanilla Cloud</li><li>Ceremonial Matcha</li></ul>
+                <p class="price">£4.5</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QAHWA CEREMONY ============ -->
+    <section class="ceremony" id="qahwa" aria-labelledby="qahwaTitle">
+      <div class="ceremony__art" data-reveal>
+        <svg viewBox="0 0 600 560" class="ceremony__svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="gTray" cx=".5" cy=".4" r=".7">
+              <stop offset="0" stop-color="#f3d98c"/>
+              <stop offset=".6" stop-color="#b8892c"/>
+              <stop offset="1" stop-color="#4e360b"/>
+            </radialGradient>
+            <radialGradient id="gDate" cx=".35" cy=".3" r=".8">
+              <stop offset="0" stop-color="#a5622c"/>
+              <stop offset=".6" stop-color="#5a2a10"/>
+              <stop offset="1" stop-color="#2a1206"/>
+            </radialGradient>
+          </defs>
+          <circle cx="300" cy="290" r="250" fill="url(#gHalo)"/>
+          <g class="ceremony__rosette" id="rosette2" transform="translate(300 290)"></g>
+          <ellipse cx="300" cy="470" rx="270" ry="58" fill="#000" opacity=".5" filter="url(#fSoft)"/>
+          <ellipse cx="300" cy="452" rx="262" ry="60" fill="url(#gTray)"/>
+          <ellipse cx="300" cy="446" rx="244" ry="52" fill="#2a1d0e"/>
+          <ellipse cx="300" cy="446" rx="244" ry="52" fill="none" stroke="#e8c870" stroke-width="1.4"/>
+          <ellipse cx="300" cy="446" rx="226" ry="46" fill="none" stroke="#d4af37" stroke-width=".8" stroke-dasharray="2 6" opacity=".8"/>
+          <use href="#potArt" transform="translate(372 452) scale(.66)"/>
+          <g transform="translate(168 404) scale(.5)">
+            <use href="#cupStatic"/>
+          </g>
+          <g transform="translate(250 438) scale(.46)">
+            <use href="#cupStatic"/>
+          </g>
+          <g transform="translate(520 448)">
+            <ellipse cx="0" cy="8" rx="52" ry="14" fill="url(#gTray)"/>
+            <ellipse cx="0" cy="2" rx="46" ry="11" fill="#e9dccb"/>
+            <ellipse cx="-14" cy="-4" rx="15" ry="8" fill="url(#gDate)" transform="rotate(-18 -14 -4)"/>
+            <ellipse cx="12" cy="-6" rx="15" ry="8" fill="url(#gDate)" transform="rotate(12 12 -6)"/>
+            <ellipse cx="0" cy="-14" rx="14" ry="7.5" fill="url(#gDate)" transform="rotate(-4 0 -14)"/>
+          </g>
+          <g transform="translate(458 498)">
+            <ellipse cx="0" cy="4" rx="30" ry="9" fill="url(#gTray)"/>
+            <ellipse cx="0" cy="0" rx="25" ry="7" fill="#c9a273"/>
+            <ellipse cx="-4" cy="-1" rx="9" ry="2" fill="#e8cfa6" opacity=".8"/>
+          </g>
+        </svg>
+      </div>
+      <div class="ceremony__copy">
+        <p class="eyebrow"><span class="eyebrow__line"></span>Ayn Hot Rituals <span lang="ar" class="eyebrow__ar">القهوة السعودية</span></p>
+        <h2 class="display" id="qahwaTitle" data-split>Saudi Qahwa, served traditionally.</h2>
+        <p class="lede" data-reveal>Golden, cardamom-scented and poured in small measures: in Saudi Arabia, qahwa is the first gesture of welcome. At Ayn it arrives the traditional way, in a 750 ML pour with dates and tahini dip.</p>
+        <dl class="ceremony__serve" data-reveal>
+          <div><dt>The Ceremony</dt><dd>750 ML · dates &amp; tahini dip</dd><dd class="price">£11.5</dd></div>
+          <div><dt>By the Cup</dt><dd>Saudi Qahwa</dd><dd class="price">£3.5</dd></div>
+        </dl>
+        <div class="new-note" data-reveal>
+          <span class="badge">New</span>
+          <div>
+            <p class="new-note__title">Iced Saffron Karak Chai</p>
+            <p class="new-note__desc">Rich karak chai blended with saffron, cardamom &amp; milk, served over ice.</p>
+            <ul class="notes notes--inline"><li>Strong Karak Chai</li><li>Saffron Infused</li><li>Cardamom Aroma</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FULL MENU ============ -->
+    <section class="menu" id="menu" aria-labelledby="menuTitle">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--center"><span class="eyebrow__line"></span>Our Menu <span lang="ar" class="eyebrow__ar">القائمة</span><span class="eyebrow__line"></span></p>
+        <h2 class="display display--center" id="menuTitle" data-split>The full ritual, in one sitting.</h2>
+        <div class="ornament" aria-hidden="true"><i></i><svg viewBox="0 0 40 40"><path d="M20 2 L24 16 L38 20 L24 24 L20 38 L16 24 L2 20 L16 16Z"/></svg><i></i></div>
+      </div>
+
+      <nav class="menu__chips" aria-label="Menu categories">
+        <a href="#m-signature" class="chip">Signature</a>
+        <a href="#m-matcha" class="chip">Matcha Ritual</a>
+        <a href="#m-iced" class="chip">Iced Coffee / Tea</a>
+        <a href="#m-hot" class="chip">Hot Rituals</a>
+        <a href="#m-mojito" class="chip">Mojitos</a>
+        <a href="#m-protein" class="chip">Protein Smoothies</a>
+        <a href="#m-desserts" class="chip">Desserts</a>
+      </nav>
+
+      <div class="menu__grid">
+        <article class="panel" id="m-signature" data-reveal>
+          <header class="panel__head"><h3>Ayn Signature</h3><p lang="ar">توقيعات عين</p></header>
+          <ul class="items">
+            <li><span class="items__no">01</span><span class="items__name">Strawberry Cream Matcha</span><i></i><span class="items__price">£4.9</span><p class="items__desc">Sweet strawberry cream meets smooth matcha.</p></li>
+            <li><span class="items__no">02</span><span class="items__name">Caramel Dune Latte</span><i></i><span class="items__price">£4.5</span><p class="items__desc">Caramel waves blended with silky coffee &amp; milk.</p></li>
+            <li><span class="items__no">03</span><span class="items__name">Iced Spanish Latte</span><i></i><span class="items__price">£4.4</span><p class="items__desc">Bold espresso meets rich, sweet condensed milk over ice.</p></li>
+            <li><span class="items__no">04</span><span class="items__name">Pistachio Royal Crunch Latte</span><i></i><span class="items__price">£4.9</span><p class="items__desc">Nutty pistachio blended with creamy milk &amp; a crunchy pistachio topping.</p></li>
+            <li><span class="items__no">05</span><span class="items__name">Iced Peach Oolong</span><i></i><span class="items__price">£3.9</span><p class="items__desc">Juicy peach infused with fragrant oolong tea.</p></li>
+            <li><span class="items__no">06</span><span class="items__name">White Chocolate Matcha</span><i></i><span class="items__price">£4.5</span><p class="items__desc">Smooth matcha with rich white chocolate.</p></li>
+            <li><span class="items__no">07</span><span class="items__name">Blue Cloud Matcha</span><i></i><span class="items__price">£4.5</span><p class="items__desc">Creamy vanilla clouds blended with smooth ceremonial matcha.</p></li>
+          </ul>
+        </article>
+
+        <article class="panel" id="m-matcha" data-reveal>
+          <header class="panel__head"><h3>Matcha Ritual</h3><p lang="ar">طقوس الماتشا</p></header>
+          <ul class="items">
+            <li><span class="items__no">01</span><span class="items__name">Classic Matcha</span><i></i><span class="items__price">£3.9</span><p class="items__desc">Pure matcha, smooth &amp; balanced with a naturally vibrant finish.</p></li>
+            <li><span class="items__no">02</span><span class="items__name">Pistachio Crunch Matcha</span><i></i><span class="items__price">£4.4</span><p class="items__desc">Dreamy matcha blended with creamy milk &amp; rich pistachio, finished with a crunchy pistachio topping.</p></li>
+            <li><span class="items__no">03</span><span class="items__name">Spanish Matcha Latte</span><i></i><span class="items__price">£4.4</span></li>
+            <li><span class="items__no">04</span><span class="items__name">Tiramisu Matcha</span><i></i><span class="items__price">£4.4</span></li>
+            <li><span class="items__no">05</span><span class="items__name">Banana Pudding Matcha</span><i></i><span class="items__price">£4.4</span></li>
+          </ul>
+        </article>
+
+        <article class="panel" id="m-iced" data-reveal>
+          <header class="panel__head"><h3>Iced Coffee / Tea</h3><p lang="ar">قهوة وشاي مثلج</p></header>
+          <ul class="items">
+            <li><span class="items__name">Strawberry Black Mojito</span><i></i><span class="items__price">£4.5</span></li>
+            <li><span class="items__name">Iced French Vanilla Latte</span><i></i><span class="items__price">£4.5</span></li>
+            <li><span class="items__name">Iced Tiramisu Latte</span><i></i><span class="items__price">£4.9</span></li>
+            <li><span class="items__name">Iced Saffron Karak <span class="badge badge--sm">New</span></span><i></i><span class="items__price">£4.5</span><p class="items__desc">Rich karak chai blended with saffron, cardamom &amp; milk, served over ice.</p></li>
+            <li><span class="items__name">Cloud 9 White Latte</span><i></i><span class="items__price">£4.5</span></li>
+          </ul>
+        </article>
+
+        <article class="panel panel--feature" id="m-hot" data-reveal>
+          <header class="panel__head"><h3>Ayn Hot Rituals</h3><p lang="ar">الطقوس الساخنة</p></header>
+          <ul class="items">
+            <li class="items__hero"><span class="items__name">Saudi Qahwa, served traditionally</span><i></i><span class="items__price">£11.5</span><p class="items__desc">750 ML, served with dates and tahini dip.</p></li>
+            <li><span class="items__name">Saudi Qahwa</span><i></i><span class="items__price">£3.5</span></li>
+            <li><span class="items__name">Karak Chai</span><i></i><span class="items__price">£3.5</span></li>
+            <li><span class="items__name">Sugar Free Karak</span><i></i><span class="items__price">£3.5</span></li>
+            <li><span class="items__name">Coffee of the Day</span><i></i><span class="items__price">£2.9</span></li>
+            <li><span class="items__name">Ginger Chai</span><i></i><span class="items__price">£3.5</span></li>
+            <li><span class="items__name">Saffron Karak</span><i></i><span class="items__price">£3.9</span></li>
+            <li><span class="items__name">Karak Coffee</span><i></i><span class="items__price">£3.9</span></li>
+            <li><span class="items__name">Moroccan Mint Tea</span><i></i><span class="items__price">£2.9</span></li>
+          </ul>
+        </article>
+
+        <article class="panel" id="m-mojito" data-reveal>
+          <header class="panel__head"><h3>Ayn Mojitos</h3><p lang="ar">موهيتو عين</p></header>
+          <ul class="items">
+            <li><span class="items__name">Blue Lagoon</span><i></i><span class="items__price">£4.4</span></li>
+            <li><span class="items__name">Passionfruit</span><i></i><span class="items__price">£4.4</span></li>
+            <li><span class="items__name">Strawberry</span><i></i><span class="items__price">£4.4</span></li>
+          </ul>
+        </article>
+
+        <article class="panel" id="m-protein" data-reveal>
+          <header class="panel__head"><h3>Ayn Protein Smoothies</h3><p lang="ar">سموذي البروتين</p></header>
+          <p class="panel__sub">Functional · Fitness · Clean Energy</p>
+          <ul class="items">
+            <li><span class="items__name">Muscle Beach</span><i></i><span class="items__price">£5.5</span><p class="items__desc">24g vanilla whey protein, banana, peanut butter, oat milk.</p></li>
+            <li><span class="items__name">Ayn Breakfast</span><i></i><span class="items__price">£5.5</span><p class="items__desc">Banana, oats, 24g vanilla whey protein, milk, espresso shot.</p></li>
+          </ul>
+        </article>
+
+        <article class="panel panel--wide" id="m-desserts" data-reveal>
+          <header class="panel__head"><h3>Ayn Desserts</h3><p lang="ar">الحلويات</p></header>
+          <div class="panel__cols">
+            <div>
+              <p class="panel__group">San Sebastián Cheesecake</p>
+              <ul class="items">
+                <li><span class="items__name">Classic</span><i></i><span class="items__price">£6.0</span></li>
+                <li><span class="items__name">Pistachio</span><i></i><span class="items__price">£7.0</span></li>
+                <li><span class="items__name">Knafeh</span><i></i><span class="items__price">£9.0</span></li>
+              </ul>
+            </div>
+            <div>
+              <p class="panel__group">Freshly Baked Cookie Dough</p>
+              <ul class="items">
+                <li><span class="items__name">Classic</span><i></i><span class="items__price">£4.5</span></li>
+                <li><span class="items__name">Pistachio</span><i></i><span class="items__price">£5.5</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ MENU BOOK (original menu pages) ============ -->
+    <section class="book" id="book" aria-labelledby="bookTitle">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow"><span class="eyebrow__line"></span>The Menu Book</p>
+          <h2 class="display" id="bookTitle" data-split>Eleven pages, turned slowly.</h2>
+        </div>
+        <div class="book__controls">
+          <button class="round-btn" id="bookPrev" aria-label="Previous pages"><svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg></button>
+          <button class="round-btn" id="bookNext" aria-label="Next pages"><svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg></button>
+        </div>
+      </div>
+      <div class="book__rail" id="bookRail" tabindex="0" aria-label="Menu pages, scroll horizontally">
+        <figure class="page"><button class="page__btn" data-index="0"><img src="https://www.aynritual.co/images/menu/1.jpeg" alt="Menu page 1: Classic Matcha" loading="lazy"></button><figcaption><span>01</span>Classic Matcha</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="1"><img src="https://www.aynritual.co/images/menu/2.jpeg" alt="Menu page 2: Caramel Dune Latte" loading="lazy"></button><figcaption><span>02</span>Caramel Dune Latte</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="2"><img src="https://www.aynritual.co/images/menu/3.jpeg" alt="Menu page 3: Iced Spanish Latte" loading="lazy"></button><figcaption><span>03</span>Iced Spanish Latte</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="3"><img src="https://www.aynritual.co/images/menu/4.jpeg" alt="Menu page 4: Pistachio Dream Matcha" loading="lazy"></button><figcaption><span>04</span>Pistachio Dream Matcha</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="4"><img src="https://www.aynritual.co/images/menu/5.jpeg" alt="Menu page 5: Iced Peach Oolong Tea" loading="lazy"></button><figcaption><span>05</span>Iced Peach Oolong Tea</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="5"><img src="https://www.aynritual.co/images/menu/6.jpeg" alt="Menu page 6: the full Ayn menu with prices" loading="lazy"></button><figcaption><span>06</span>The Full Menu</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="6"><img src="https://www.aynritual.co/images/menu/7.jpeg" alt="Menu page 7: New Iced Saffron Karak Chai" loading="lazy"></button><figcaption><span>07</span>Iced Saffron Karak Chai</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="7"><img src="https://www.aynritual.co/images/menu/8.jpeg" alt="Menu page 8: Blue Cloud Matcha" loading="lazy"></button><figcaption><span>08</span>Blue Cloud Matcha</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="8"><img src="https://www.aynritual.co/images/menu/9.jpeg" alt="Menu page 9: Pistachio Royal Crunch Latte" loading="lazy"></button><figcaption><span>09</span>Pistachio Royal Crunch Latte</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="9"><img src="https://www.aynritual.co/images/menu/10.jpeg" alt="Menu page 10: Strawberry Cream Matcha" loading="lazy"></button><figcaption><span>10</span>Strawberry Cream Matcha</figcaption></figure>
+        <figure class="page"><button class="page__btn" data-index="10"><img src="https://www.aynritual.co/images/menu/11.jpeg" alt="Menu page 11: White Chocolate Matcha" loading="lazy"></button><figcaption><span>11</span>White Chocolate Matcha</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ============ VISIT ============ -->
+    <section class="visit" id="visit" aria-labelledby="visitTitle">
+      <div class="visit__copy">
+        <p class="eyebrow"><span class="eyebrow__line"></span>Visit <span lang="ar" class="eyebrow__ar">زورونا</span></p>
+        <h2 class="display" id="visitTitle" data-split>A pause in Fitzrovia.</h2>
+        <address class="visit__address" data-reveal>
+          168 New Cavendish St<br>London W1W 6YX
+        </address>
+        <div class="visit__actions" data-reveal>
+          <a class="btn btn--gold" href="https://www.google.com/maps/search/?api=1&amp;query=168%20New%20Cavendish%20St%2C%20London%20W1W%206YX" target="_blank" rel="noopener"><span>Get Directions</span></a>
+          <a class="btn btn--ghost" href="tel:+447951490800"><span>+44 7951 490 800</span></a>
+        </div>
+      </div>
+      <div class="visit__map" data-reveal>
+        <div class="visit__frame">
+          <iframe title="Map showing Ayn at 168 New Cavendish St, London" src="https://maps.google.com/maps?q=168%20New%20Cavendish%20St%2C%20London%20W1W%206YX&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <span class="visit__pin" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact" aria-labelledby="contactTitle">
+      <div class="contact__info">
+        <p class="eyebrow"><span class="eyebrow__line"></span>Get in Touch <span lang="ar" class="eyebrow__ar">تواصل معنا</span></p>
+        <h2 class="display" id="contactTitle" data-split>Write to us, or simply drop by.</h2>
+        <dl class="contact__list" data-reveal>
+          <div><dt>Email 1</dt><dd><a href="mailto:admin@aynritual.co">admin@aynritual.co</a></dd></div>
+          <div><dt>Email 2</dt><dd><a href="mailto:aynritual@gmail.com">aynritual@gmail.com</a></dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+447951490800">+44 7951 490 800</a></dd></div>
+          <div><dt>Address</dt><dd>168 New Cavendish St, London W1W 6YX</dd></div>
+        </dl>
+      </div>
+      <form class="form" id="contactForm" data-reveal novalidate>
+        <div class="form__row">
+          <label class="field"><input name="name" type="text" autocomplete="name" placeholder=" " required><span>Name</span></label>
+          <label class="field"><input name="email" type="email" autocomplete="email" placeholder=" " required><span>Email</span></label>
+        </div>
+        <div class="form__row">
+          <label class="field"><input name="phone" type="tel" autocomplete="tel" placeholder=" "><span>Contact Number</span></label>
+          <label class="field"><input name="subject" type="text" placeholder=" "><span>Subject</span></label>
+        </div>
+        <label class="field field--area"><textarea name="message" rows="5" placeholder=" " required></textarea><span>Message</span></label>
+        <div class="form__foot">
+          <button class="btn btn--gold" type="submit"><span>Send Message</span></button>
+          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__pattern" aria-hidden="true"></div>
+    <p class="footer__mark"><span class="foil">AYN</span><span class="footer__ar" lang="ar">عين</span></p>
+    <p class="footer__tag">A Modern Ritual</p>
+    <ul class="socials">
+      <li><a href="https://instagram.com/ayn.ritual" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" class="fill"/></svg><span>Instagram</span></a></li>
+      <li><a href="https://facebook.com/ayn.ritual" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5A.5.5 0 0 1 14.5 8Z"/></svg><span>Facebook</span></a></li>
+      <li><a href="https://twitter.com/ayn.ritual" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M4 4 L20 20 M20 4 L4 20"/></svg><span>Twitter</span></a></li>
+      <li><a href="https://tiktok.com/@ayn.ritual" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 3 2.5 5 5.5 5"/></svg><span>TikTok</span></a></li>
+    </ul>
+    <p class="footer__copy">© 2026 Ayn Ritual. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox for menu pages -->
+  <dialog class="lightbox" id="lightbox" aria-label="Menu page viewer">
+    <button class="lightbox__close" id="lbClose" aria-label="Close">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous page"><svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg></button>
+    <figure class="lightbox__figure"><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next page"><svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg></button>
+  </dialog>
+
+  <!-- Static finjan used in the ceremony still life -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="cupStatic">
+        <ellipse cx="0" cy="132" rx="136" ry="30" fill="url(#gRing)"/>
+        <ellipse cx="0" cy="128" rx="131" ry="27" fill="url(#gSaucer)"/>
+        <ellipse cx="0" cy="128" rx="108" ry="21.5" fill="none" stroke="#c9a23c" stroke-width="1.6"/>
+        <path d="M -40 110 L 40 110 L 47 126 Q 0 133 -47 126 Z" fill="url(#gRing)"/>
+        <ellipse cx="0" cy="0" rx="80" ry="24" fill="url(#gInterior)"/>
+        <ellipse cx="0" cy="8" rx="74" ry="19" fill="url(#gQahwa)"/>
+        <path d="M -80 0 A 80 24 0 0 0 80 0 C 79 52, 64 100, 36 112 Q 0 118 -36 112 C -64 100, -79 52, -80 0 Z" fill="url(#gPorcelain)"/>
+        <path d="M -79 18 A 79 23 0 0 0 79 18" fill="none" stroke="#c9a23c" stroke-width="2.4"/>
+        <path d="M -73 58 A 72 21 0 0 0 73 58" fill="none" stroke="#c9a23c" stroke-width="1.6"/>
+        <ellipse cx="0" cy="0" rx="80" ry="24" fill="none" stroke="url(#gRing)" stroke-width="4"/>
+      </g>
+    </defs>
+  </svg>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
