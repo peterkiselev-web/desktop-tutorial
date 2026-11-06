@@ -20,29 +20,50 @@ favicon.svg, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png, s
 robots.txt, sitemap.xml
 ```
 
-## Before going live
+## Live site (GitHub Pages)
 
-1. **Set the real domain.** The site uses `https://www.thepricelondon.co.uk` as a placeholder in the canonical
-   tag, social tags, JSON-LD, `robots.txt` and `sitemap.xml`. Replace it in one go:
+**https://peterkiselev-web.github.io/desktop-tutorial/**
+
+GitHub Pages publishes the `gh-pages` branch, which holds the contents of this folder at its root
+(Settings > Pages > Source: "Deploy from a branch", branch `gh-pages`, folder `/ (root)`).
+
+To publish changes, commit them on the working branch, then push this folder to `gh-pages` from the repo root:
+
+```sh
+git subtree push --prefix the-price origin gh-pages
+```
+
+The live site updates a minute or two later. `.nojekyll` tells GitHub Pages to serve the files as they are.
+
+## Moving to a custom domain
+
+The canonical tag, social tags, JSON-LD, `robots.txt` and `sitemap.xml` all use the GitHub Pages address. When a
+domain is ready (for example `www.thepricew9.co.uk`):
+
+1. Swap the address everywhere, from inside this folder:
 
    ```sh
-   grep -rl "thepricelondon.co.uk" . | xargs sed -i 's#https://www.thepricelondon.co.uk#https://YOUR-DOMAIN#g'
+   grep -rl "peterkiselev-web.github.io/desktop-tutorial" . | xargs sed -i 's#https://peterkiselev-web.github.io/desktop-tutorial#https://www.YOUR-DOMAIN#g'
    ```
 
-2. **Confirm the claims that the owner should sign off:**
+2. In `404.html`, change `<base href="/desktop-tutorial/">` to `<base href="/">`.
+3. Add a `CNAME` file in this folder containing just the domain, point the domain's DNS at GitHub Pages, and
+   set the domain under Settings > Pages.
+
+## Before telling customers about it
+
+1. **Confirm the claims that the owner should sign off:**
    - Length and terms of the repair guarantee and the guarantee on phones sold (the copy says "guaranteed" without a duration).
    - Photo ID required when selling a phone to the shop.
    - Walk-ins welcome without an appointment.
 
-3. **Add the website to the Google Business Profile** (the listing currently says "Add website"). This links the
+2. **Add the website to the Google Business Profile** (the listing currently says "Add website"). This links the
    site to the 4.9-star listing and is the single biggest local-SEO step.
 
-4. Submit `sitemap.xml` in Google Search Console once the domain is live.
+3. Add the site in Google Search Console and submit `sitemap.xml`.
 
-## Hosting
-
-Any static host works (Netlify, Vercel, Cloudflare Pages, GitHub Pages). Deploy this folder as the site root so
-`robots.txt`, `sitemap.xml` and `404.html` sit at the top level.
+Note: on a `github.io` project address, search engines only read `robots.txt` at the very root of the host, so
+the copy in this folder starts working once the site has its own domain. The sitemap works either way.
 
 ## Updating
 

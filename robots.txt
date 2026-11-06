@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.thepricelondon.co.uk/sitemap.xml
+Sitemap: https://peterkiselev-web.github.io/desktop-tutorial/sitemap.xml
