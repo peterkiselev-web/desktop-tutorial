@@ -22,33 +22,25 @@ robots.txt, sitemap.xml
 
 ## Live site (GitHub Pages)
 
-**https://peterkiselev-web.github.io/desktop-tutorial/**
+**https://peterkiselev-web.github.io/desktop-tutorial/the-price/**
 
-GitHub Pages publishes the `gh-pages` branch, which holds the contents of this folder at its root
-(Settings > Pages > Source: "Deploy from a branch", branch `gh-pages`, folder `/ (root)`).
-
-To publish changes, commit them on the working branch, then push this folder to `gh-pages` from the repo root:
-
-```sh
-git subtree push --prefix the-price origin gh-pages
-```
-
-The live site updates a minute or two later. `.nojekyll` tells GitHub Pages to serve the files as they are.
+GitHub Pages for this repo publishes the `main` branch from its root, so every folder with an `index.html` is a
+live site (`/ayn-ritual/` is the other one). Anything merged into `main` goes live a minute or two later.
 
 ## Moving to a custom domain
 
-The canonical tag, social tags, JSON-LD, `robots.txt` and `sitemap.xml` all use the GitHub Pages address. When a
-domain is ready (for example `www.thepricew9.co.uk`):
+The canonical tag, social tags, JSON-LD, `robots.txt` and `sitemap.xml` all use the GitHub Pages address above.
+When the shop has its own domain (for example `www.thepricew9.co.uk`):
 
 1. Swap the address everywhere, from inside this folder:
 
    ```sh
-   grep -rl "peterkiselev-web.github.io/desktop-tutorial" . | xargs sed -i 's#https://peterkiselev-web.github.io/desktop-tutorial#https://www.YOUR-DOMAIN#g'
+   grep -rl "peterkiselev-web.github.io/desktop-tutorial/the-price/" . | xargs sed -i 's#https://peterkiselev-web.github.io/desktop-tutorial/the-price/#https://www.YOUR-DOMAIN/#g'
    ```
 
-2. In `404.html`, change `<base href="/desktop-tutorial/">` to `<base href="/">`.
-3. Add a `CNAME` file in this folder containing just the domain, point the domain's DNS at GitHub Pages, and
-   set the domain under Settings > Pages.
+2. In `404.html`, change `<base href="/desktop-tutorial/the-price/">` to `<base href="/">`.
+3. Host this folder as the root of that domain. Easiest: a separate repository (or Netlify/Cloudflare Pages)
+   containing just these files, plus a `CNAME` file with the domain if it stays on GitHub Pages.
 
 ## Before telling customers about it
 
