@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://www.thepricelondon.co.uk/</loc>
+    <loc>https://peterkiselev-web.github.io/desktop-tutorial/</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <image:image><image:loc>https://www.thepricelondon.co.uk/og-image.jpg</image:loc></image:image>
-    <image:image><image:loc>https://www.thepricelondon.co.uk/assets/img/storefront-1400.webp</image:loc></image:image>
-    <image:image><image:loc>https://www.thepricelondon.co.uk/assets/img/shopfront-window-1440.webp</image:loc></image:image>
-    <image:image><image:loc>https://www.thepricelondon.co.uk/assets/img/bench-973.webp</image:loc></image:image>
-    <image:image><image:loc>https://www.thepricelondon.co.uk/assets/img/repair-open-1400.webp</image:loc></image:image>
+    <image:image><image:loc>https://peterkiselev-web.github.io/desktop-tutorial/og-image.jpg</image:loc></image:image>
+    <image:image><image:loc>https://peterkiselev-web.github.io/desktop-tutorial/assets/img/storefront-1400.webp</image:loc></image:image>
+    <image:image><image:loc>https://peterkiselev-web.github.io/desktop-tutorial/assets/img/shopfront-window-1440.webp</image:loc></image:image>
+    <image:image><image:loc>https://peterkiselev-web.github.io/desktop-tutorial/assets/img/bench-973.webp</image:loc></image:image>
+    <image:image><image:loc>https://peterkiselev-web.github.io/desktop-tutorial/assets/img/repair-open-1400.webp</image:loc></image:image>
   </url>
 </urlset>
