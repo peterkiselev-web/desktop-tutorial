@@ -39,24 +39,21 @@
   /* ---------- Open / closed status + today's hours ---------- */
   (function status() {
     var now = londonNow();
-    var el = document.querySelector('[data-status]');
-    var txt = document.querySelector('[data-status-text]');
     var today = HOURS[now.day];
     var label, open = false;
 
     if (now.mins >= today[0] && now.mins < today[1]) {
       open = true;
       label = 'Open now · until ' + fmt(today[1]);
-    } else if (now.mins < today[0]) {
-      label = 'Closed · opens ' + fmt(today[0]) + ' today';
     } else {
-      var next = (now.day + 1) % 7;
-      label = 'Closed · opens ' + fmt(HOURS[next][0]) + ' tomorrow';
+      // The shop is shut, but WhatsApp support runs 24/7, so say so.
+      label = 'Shop closed · WhatsApp us 24/7';
     }
-    if (el && txt) {
-      txt.textContent = label;
+    document.querySelectorAll('[data-status]').forEach(function (el) {
+      var txt = el.querySelector('[data-status-text]');
+      if (txt) txt.textContent = label;
       el.classList.add(open ? 'is-open' : 'is-closed');
-    }
+    });
     var row = document.querySelector('[data-hours] tr[data-day="' + now.day + '"]');
     if (row) row.classList.add('today');
   })();
@@ -67,21 +64,81 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Mobile menu ---------- */
-  var toggle = document.querySelector('.menu-toggle');
-  var nav = document.getElementById('site-nav');
-  function setMenu(open) {
-    document.body.classList.toggle('menu-open', open);
-    if (toggle) {
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    }
+  /* ---------- Full-screen menu (header and bottom-bar Menu buttons) ---------- */
+  var panel = document.getElementById('menu');
+  var openers = document.querySelectorAll('[data-menu-open]');
+  var lastOpener = null;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setExpanded(v) { openers.forEach(function (b) { b.setAttribute('aria-expanded', String(v)); }); }
+
+  function openMenu(opener) {
+    if (!panel || !panel.hidden) return;
+    lastOpener = opener || null;
+    panel.hidden = false;
+    document.body.classList.add('menu-open');
+    setExpanded(true);
+    requestAnimationFrame(function () { panel.classList.add('is-open'); });
+    var current = panel.querySelector('.menu-list a[aria-current="true"]') || panel.querySelector('.menu-list a');
+    if (current) current.focus({ preventScroll: true });
   }
-  if (toggle && nav) {
-    toggle.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
-    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
-    window.matchMedia('(min-width: 901px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
+
+  function closeMenu(restoreFocus) {
+    if (!panel || panel.hidden) return;
+    panel.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
+    setExpanded(false);
+    var hide = function () { panel.hidden = true; };
+    if (reduceMotion) hide(); else setTimeout(hide, 260);
+    if (restoreFocus !== false && lastOpener) lastOpener.focus({ preventScroll: true });
+  }
+
+  if (panel) {
+    openers.forEach(function (b) { b.addEventListener('click', function () { openMenu(b); }); });
+    panel.querySelectorAll('[data-menu-close]').forEach(function (b) { b.addEventListener('click', function () { closeMenu(); }); });
+    // Following a section link closes the menu; the browser then scrolls to the section.
+    panel.addEventListener('click', function (e) { if (e.target.closest('a')) closeMenu(false); });
+    document.addEventListener('keydown', function (e) {
+      if (panel.hidden) return;
+      if (e.key === 'Escape') { closeMenu(); return; }
+      if (e.key === 'Tab') {   // keep keyboard focus inside the open menu
+        var f = panel.querySelectorAll('a[href], button');
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+    window.matchMedia('(min-width: 1181px)').addEventListener('change', function (m) { if (m.matches) closeMenu(false); });
+  }
+
+  /* ---------- Floating WhatsApp button appears once the hero buttons scroll out of view ---------- */
+  var fab = document.querySelector('.wa-fab');
+  var heroCtas = document.querySelector('.hero-ctas');
+  if (fab && heroCtas && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      fab.classList.toggle('is-visible', !en[0].isIntersecting && en[0].boundingClientRect.top < 0);
+    }).observe(heroCtas);
+  } else if (fab) {
+    fab.classList.add('is-visible');
+  }
+
+  /* ---------- Highlight the section you're reading, in the top links and the menu ---------- */
+  var spyLinks = document.querySelectorAll('[data-spy]');
+  if ('IntersectionObserver' in window && spyLinks.length) {
+    var ids = [];
+    spyLinks.forEach(function (a) { var id = a.getAttribute('href').slice(1); if (ids.indexOf(id) < 0) ids.push(id); });
+    var setCurrent = function (id) {
+      spyLinks.forEach(function (a) {
+        if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    };
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) setCurrent(en.target.id); });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    ids.forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+    var hero = document.querySelector('.hero');
+    if (hero) new IntersectionObserver(function (en) { if (en[0].isIntersecting) setCurrent(''); }, { rootMargin: '-40% 0px -55% 0px' }).observe(hero);
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -109,11 +166,12 @@
     });
   });
 
-  /* ---------- Quote form: compose an SMS ---------- */
+  /* ---------- Quote form: compose a WhatsApp message (or an SMS) ---------- */
   var form = document.querySelector('[data-quote]');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var channel = (e.submitter && e.submitter.getAttribute('data-channel')) || 'whatsapp';
       var model = form.model.value.trim();
       var note = form.querySelector('[data-form-note]');
       if (!model) {
@@ -127,9 +185,15 @@
       if (form.notes.value.trim()) lines.push('Details: ' + form.notes.value.trim());
       if (form.name.value.trim()) lines.push('Name: ' + form.name.value.trim());
       var body = encodeURIComponent(lines.join('\n'));
-      // "?&body=" is understood by both iOS and Android messaging apps.
-      window.location.href = 'sms:' + PHONE + '?&body=' + body;
-      if (note) note.textContent = 'Your messages app should open now. On a computer? Call us on 07999 910101 instead.';
+      if (channel === 'sms') {
+        // "?&body=" is understood by both iOS and Android messaging apps.
+        window.location.href = 'sms:' + PHONE + '?&body=' + body;
+        if (note) note.textContent = 'Your messages app should open now. On a computer? Use WhatsApp or call 07999 910101.';
+      } else {
+        // wa.me opens the WhatsApp app on phones and WhatsApp Web on computers.
+        window.open('https://wa.me/' + PHONE.replace('+', '') + '?text=' + body, '_blank', 'noopener');
+        if (note) note.textContent = 'WhatsApp should open with your message ready to send. Support is available 24/7.';
+      }
     });
   }
 
